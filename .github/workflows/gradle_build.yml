@@ -5,7 +5,8 @@ name: Java CI with Gradle
 
 on:
   push:
-  pull_request:
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
@@ -28,16 +29,10 @@ jobs:
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build -Pmod_version="$(git describe --always --tags --first-parent | cut -c2-)"
+      run: ./gradlew build -Pmod_version="$(git describe --tag --abbrev=0)"
 
-    - name: Archive Artifacts
-      uses: actions/upload-artifact@v4
+    - name: release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        name: Artifacts
-        path: dist/
-        
-    - name: Archive mapping.txt
-      uses: actions/upload-artifact@v4
-      with:
-        name: Mappings
-        path: mapping/
+        files: dist/*.jar

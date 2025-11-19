@@ -91,7 +91,6 @@ public class WorldProvider implements IWorldProvider {
                 Files.createDirectories(worldDataDir);
             } catch (IOException ignored) {}
 
-            System.out.println("Baritone world data dir: " + worldDataDir);
             synchronized (worldCache) {
                 this.currentWorld = worldCache.computeIfAbsent(worldDataDir, d -> new WorldData(d, world.dimensionType()));
             }
@@ -166,11 +165,9 @@ public class WorldProvider implements IWorldProvider {
     private void detectAndHandleBrokenLoading() {
         if (this.mcWorld != ctx.world()) {
             if (this.currentWorld != null) {
-                System.out.println("mc.world unloaded unnoticed! Unloading Baritone cache now.");
                 closeWorld();
             }
             if (ctx.world() != null) {
-                System.out.println("mc.world loaded unnoticed! Loading Baritone cache now.");
                 initWorld(ctx.world());
             }
         } else if (this.currentWorld == null && ctx.world() != null && (ctx.minecraft().hasSingleplayerServer() || ctx.minecraft().getCurrentServer() != null)) {

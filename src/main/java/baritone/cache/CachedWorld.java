@@ -83,7 +83,6 @@ public final class CachedWorld implements ICachedWorld, Helper {
         }
         this.directory = directory.toString();
         this.dimension = dimension;
-        System.out.println("Cached world directory: " + directory);
         Baritone.getExecutor().execute(new PackerThread());
         Baritone.getExecutor().execute(() -> {
             try {
@@ -176,7 +175,6 @@ public final class CachedWorld implements ICachedWorld, Helper {
             }
         });
         long now = System.nanoTime() / 1000000L;
-        System.out.println("World save took " + (now - start) + "ms");
         prune();
     }
 

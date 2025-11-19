@@ -50,7 +50,6 @@ public class WaypointCollection implements IWaypointCollection {
                 Files.createDirectories(directory);
             } catch (IOException ignored) {}
         }
-        System.out.println("Would save waypoints to " + directory);
         this.waypoints = new HashMap<>();
         load();
     }

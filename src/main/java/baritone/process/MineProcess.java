@@ -55,7 +55,7 @@ public final class MineProcess extends BaritoneProcessHelper implements IMinePro
 
     private BlockOptionalMetaLookup filter;
     private List<BlockPos> knownOreLocations;
-    private List<BlockPos> blacklist; // inaccessible
+    public List<BlockPos> blacklist; // inaccessible
     private Map<BlockPos, Long> anticipatedDrops;
     private BlockPos branchPoint;
     private GoalRunAway branchPointRunaway;

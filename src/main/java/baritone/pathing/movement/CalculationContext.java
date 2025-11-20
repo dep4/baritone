@@ -18,10 +18,12 @@
 package baritone.pathing.movement;
 
 import baritone.Baritone;
+import baritone.api.BaritoneAPI;
 import baritone.api.IBaritone;
 import baritone.api.pathing.movement.ActionCosts;
 import baritone.cache.WorldData;
 import baritone.pathing.precompute.PrecomputedData;
+import baritone.process.MineProcess;
 import baritone.utils.BlockStateInterface;
 import baritone.utils.ToolSet;
 import baritone.utils.pathing.BetterWorldBorder;
@@ -216,6 +218,7 @@ public class CalculationContext {
 
     public boolean isPossiblyProtected(int x, int y, int z) {
         // TODO more protection logic here; see #220
+        if (((MineProcess)baritone.getMineProcess()).blacklist.contains(new BlockPos(x,y,z))) return true;
         return false;
     }
 }

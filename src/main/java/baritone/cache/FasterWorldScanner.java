@@ -228,6 +228,7 @@ public enum FasterWorldScanner implements IWorldScanner {
             long l = longArray[i];
             for (int offset = 0; offset <= (64 - bitsPerEntry) && idx < arraySize; offset += bitsPerEntry, ++idx) {
                 int value = (int) ((l >> offset) & maxEntryValue);
+                if (value>=isInFilter.length) return;
                 if (isInFilter[value]) {
                     //noinspection DuplicateExpressions
                     blocks.add(new BlockPos(

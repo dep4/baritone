@@ -233,6 +233,6 @@ public final class NetherPathfinderContext {
     }
 
     public static boolean isSupported() {
-        return NetherPathfinder.isThisSystemSupported();
+        return false;
     }
 }

@@ -165,6 +165,7 @@ public enum FasterWorldScanner implements IWorldScanner {
     private List<BlockPos> collectChunkSections(BlockOptionalMetaLookup lookup, LevelChunk chunk, long chunkX, long chunkZ, int playerSection) {
         // iterate over sections relative to player
         List<BlockPos> blocks = new ArrayList<>();
+        if (chunk==null) return blocks;
         int chunkY = chunk.getMinY();
         LevelChunkSection[] sections = chunk.getSections();
         int l = sections.length;

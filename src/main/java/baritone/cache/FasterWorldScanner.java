@@ -70,7 +70,7 @@ public enum FasterWorldScanner implements IWorldScanner {
 
     @Override
     public int repack(IPlayerContext ctx) {
-        return this.repack(ctx, 40);
+        return 0;
     }
 
     @Override

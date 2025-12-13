@@ -58,7 +58,7 @@ public final class CachedWorld implements ICachedWorld, Helper {
     /**
      * The directory that the cached region files are saved to
      */
-    private final String directory;
+    private String directory=null;
 
     /**
      * Queue of positions to pack. Refers to the toPackMap, in that every element of this queue will be a
@@ -72,9 +72,10 @@ public final class CachedWorld implements ICachedWorld, Helper {
      */
     private final Map<ChunkPos, LevelChunk> toPackMap = CacheBuilder.newBuilder().softValues().<ChunkPos, LevelChunk>build().asMap();
 
-    private final DimensionType dimension;
+    private DimensionType dimension=null;
 
     CachedWorld(Path directory, DimensionType dimension) {
+        if (true) return;
         if (!Files.exists(directory)) {
             try {
                 Files.createDirectories(directory);
